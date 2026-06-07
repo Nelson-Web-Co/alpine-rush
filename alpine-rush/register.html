@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alpine Rush - Register</title>
+    <style>
+        /* Complete CSS embedded directly */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        header {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        header h1 {
+            font-size: 3rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .tagline {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            font-style: italic;
+        }
+
+        nav {
+            background-color: #2c5aa0;
+            padding: 1rem 0;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 25px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            font-size: 1.1rem;
+        }
+
+        nav a:hover, nav a.active {
+            background-color: #fff;
+            color: #2c5aa0;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+
+        .content {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 2rem;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+        }
+
+        .registration-section {
+            max-width: 600px;
+            margin: 0 auto 3rem;
+        }
+
+        .registration-form {
+            background-color: #f9f9f9;
+            padding: 2rem;
+            border-radius: 10px;
+            margin-top: 2rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: #2c5aa0;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 0.75rem;
+            border: 2px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: #2c5aa0;
+        }
+
+        .form-group input:invalid {
+            border-color: #ff6b6b;
+        }
+
+        .form-group input:valid {
+            border-color: #51cf66;
+        }
+
+        .register-button {
+            width: 100%;
+            background: linear-gradient(135deg, #2c5aa0 0%, #1e3c72 100%);
+            color: white;
+            padding: 1rem;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .register-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+
+        .benefits-list {
+            background-color: #f0f8ff;
+            padding: 2rem;
+            border-radius: 10px;
+            border-left: 4px solid #2c5aa0;
+        }
+
+        .benefits-list li {
+            margin-bottom: 0.75rem;
+            padding-left: 0.5rem;
+        }
+
+        section {
+            margin-bottom: 3rem;
+        }
+
+        section h2 {
+            font-size: 2.2rem;
+            color: #2c5aa0;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        footer {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 2rem;
+        }
+
+        #validationMessage {
+            margin-top: 1rem;
+            padding: 1rem;
+            border-radius: 5px;
+            display: none;
+        }
+
+        @media (max-width: 768px) {
+            header h1 { font-size: 2rem; }
+            nav ul { flex-direction: column; gap: 0.5rem; }
+            .content { margin: 1rem; padding: 1rem; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Alpine Rush</h1>
+        <p class="tagline">Your Ultimate Snowboarding Adventure</p>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="register.html" class="active">Register</a></li>
+            <li><a href="gear.html">Gear Guide</a></li>
+        </ul>
+    </nav>
+
+    <main class="content">
+        <section class="registration-section">
+            <h2>Join the Alpine Rush Community</h2>
+            <p>Sign up today to access exclusive content, connect with fellow riders, and get the latest updates on snowboarding events and gear reviews.</p>
+            
+            <form id="registrationForm" class="registration-form" novalidate>
+                <div class="form-group">
+                    <label for="firstName">First Name:</label>
+                    <input type="text" id="firstName" name="firstName" required pattern="[A-Za-z]+" title="First name must contain only letters">
+                </div>
+                
+                <div class="form-group">
+                    <label for="lastName">Last Name:</label>
+                    <input type="text" id="lastName" name="lastName" required pattern="[A-Za-z]+" title="Last name must contain only letters">
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">Email Address:</label>
+                    <input type="email" id="email" name="email" required title="Please enter a valid email address">
+                </div>
+                
+                <div class="form-group">
+                    <label for="mobile">Mobile Number:</label>
+                    <input type="tel" id="mobile" name="mobile" required pattern="[0-9]{10}" title="Mobile number must contain exactly 10 digits" placeholder="0123456789">
+                </div>
+                
+                <div class="form-group">
+                    <label for="password">Password:</label>
+                    <input type="password" id="password" name="password" required minlength="6" maxlength="12" title="Password must be between 6 and 12 characters">
+                </div>
+                
+                <div class="form-group">
+                    <label for="confirmPassword">Confirm Password:</label>
+                    <input type="password" id="confirmPassword" name="confirmPassword" required minlength="6" maxlength="12" title="Please confirm your password">
+                </div>
+                
+                <button type="submit" class="register-button">Submit</button>
+                
+                <div id="validationMessage"></div>
+            </form>
+        </section>
+        
+        <section class="member-benefits">
+            <h2>Member Benefits</h2>
+            <ul class="benefits-list">
+                <li>Access to exclusive gear reviews and recommendations</li>
+                <li>Early registration for snowboarding events and competitions</li>
+                <li>Connect with local riding groups and find riding partners</li>
+                <li>Receive seasonal weather updates and snow reports</li>
+                <li>Discounts on partner resort lift tickets and gear</li>
+                <li>Access to video tutorials and technique guides</li>
+                <li>Monthly newsletter with industry news and tips</li>
+            </ul>
+        </section>
+    </main>
+
+    <footer>
+        <p>© 2026 Alpine Rush. All rights reserved.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

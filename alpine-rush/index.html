@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alpine Rush - Home</title>
+    <!-- CSS embedded directly in the HTML file -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        header {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        header h1 {
+            font-size: 3rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .tagline {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            font-style: italic;
+        }
+
+        nav {
+            background-color: #2c5aa0;
+            padding: 1rem 0;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 25px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            font-size: 1.1rem;
+        }
+
+        nav a:hover, nav a.active {
+            background-color: #fff;
+            color: #2c5aa0;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+
+        .content {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 2rem;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+        }
+
+        .hero {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            margin-bottom: 3rem;
+            padding: 2rem;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            border-radius: 10px;
+        }
+
+        .hero-image, .image-placeholder {
+            width: 50%;
+            height: 300px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+
+        .image-placeholder {
+            background: linear-gradient(45deg, #4a90e2 0%, #357abd 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        .hero-text h2 {
+            font-size: 2.5rem;
+            color: #2c5aa0;
+            margin-bottom: 1rem;
+        }
+
+        .hero-text p {
+            font-size: 1.2rem;
+            color: #555;
+            line-height: 1.8;
+        }
+
+        .features h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            color: #2c5aa0;
+            margin-bottom: 2rem;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .feature {
+            text-align: center;
+            padding: 1.5rem;
+            background-color: #f9f9f9;
+            border-radius: 10px;
+            transition: transform 0.3s ease;
+        }
+
+        .feature:hover {
+            transform: translateY(-5px);
+        }
+
+        .feature-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+        }
+
+        .feature h3 {
+            color: #2c5aa0;
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .video-section {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .video-section h2 {
+            font-size: 2.5rem;
+            color: #2c5aa0;
+            margin-bottom: 2rem;
+        }
+
+        .video-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .video-container iframe {
+            width: 100%;
+            height: 450px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 2rem 0;
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        table th {
+            background: linear-gradient(135deg, #2c5aa0 0%, #1e3c72 100%);
+            color: white;
+            padding: 1rem;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        table td {
+            padding: 1rem;
+            border-bottom: 1px solid #eee;
+        }
+
+        table tr:nth-child(even) {
+            background-color: #f8f9fa;
+        }
+
+        table tr:hover {
+            background-color: #e3f2fd;
+        }
+
+        .tips-list {
+            background-color: #f9f9f9;
+            padding: 2rem;
+            border-radius: 10px;
+            margin: 1rem 0;
+        }
+
+        .tips-list li {
+            margin-bottom: 1rem;
+            padding-left: 0.5rem;
+        }
+
+        .external-link {
+            background-color: #f0f8ff;
+            padding: 2rem;
+            border-radius: 10px;
+            text-align: center;
+            margin: 2rem 0;
+        }
+
+        .external-link a {
+            color: #2c5aa0;
+            text-decoration: none;
+            font-weight: 600;
+            border-bottom: 2px solid transparent;
+            transition: border-bottom-color 0.3s ease;
+        }
+
+        .external-link a:hover {
+            border-bottom-color: #2c5aa0;
+        }
+
+        .cta {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 2rem;
+            border-radius: 10px;
+            color: white;
+            margin-top: 3rem;
+        }
+
+        .cta-image {
+            width: 40%;
+            height: 250px;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+
+        .cta-content h2 {
+            font-size: 2.2rem;
+            margin-bottom: 1rem;
+        }
+
+        .cta-content p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background-color: white;
+            color: #2c5aa0;
+            padding: 1rem 2rem;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+
+        footer {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 2rem;
+        }
+
+        section {
+            margin-bottom: 3rem;
+        }
+
+        section h2 {
+            font-size: 2.2rem;
+            color: #2c5aa0;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        @media (max-width: 768px) {
+            header h1 { font-size: 2rem; }
+            .hero { flex-direction: column; text-align: center; }
+            .image-placeholder { width: 100%; }
+            .feature-grid { grid-template-columns: 1fr; }
+            .cta { flex-direction: column; text-align: center; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Alpine Rush</h1>
+        <p class="tagline">Your Ultimate Snowboarding Adventure</p>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="register.html">Register</a></li>
+            <li><a href="gear.html">Gear Guide</a></li>
+        </ul>
+    </nav>
+
+    <main class="content">
+        <section class="hero">
+            <img src="Snowboarder-mountain.jpg" alt="Snowboarder carving down a pristine mountain slope at sunset" class="hero-image" onerror="this.outerHTML='<div class=&quot;image-placeholder&quot;>snowboarder-mountain.jpg<br><small>Add this image to your images folder</small></div>'">
+            <div class="hero-text">
+                <h2>Conquer the Mountains</h2>
+                <p>Join thousands of passionate snowboarders and discover the thrill of alpine adventures. From beginner slopes to expert terrain, we've got everything you need to shred in style.</p>
+            </div>
+        </section>
+
+        <section class="features">
+            <h2>Why Choose Alpine Rush?</h2>
+            <div class="feature-grid">
+                <div class="feature">
+                    <img src="snowboard-instructor.jpg" alt="Professional snowboard instructor teaching a group lesson on mountain slopes" class="feature-image" onerror="this.outerHTML='<div class=&quot;image-placeholder&quot; style=&quot;height:200px;&quot;>snowboard-instructor.jpg</div>'">
+                    <h3>Expert Instruction</h3>
+                    <p>Learn from certified professionals with years of mountain experience.</p>
+                </div>
+                <div class="feature">
+                    <img src="Mountain-resort.jpg" alt="Modern ski resort with chairlifts and snow-covered peaks in background" class="feature-image" onerror="this.outerHTML='<div class=&quot;image-placeholder&quot; style=&quot;height:200px;&quot;>mountain-resort.jpg</div>'">
+                    <h3>Premium Resorts</h3>
+                    <p>Access to world-class resorts with pristine slopes and modern facilities.</p>
+                </div>
+                <div class="feature">
+                    <img src="Snowboard-community.jpg" alt="Group of young snowboarders celebrating together on mountain summit" class="feature-image" onerror="this.outerHTML='<div class=&quot;image-placeholder&quot; style=&quot;height:200px;&quot;>snowboard-community.jpg</div>'">
+                    <h3>Vibrant Community</h3>
+                    <p>Connect with like-minded riders and build lifelong friendships on the slopes.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="video-section">
+            <h2>Experience the Rush</h2>
+            <div class="video-container">
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/yKP7jQknGjs" 
+                        title="Snowboarding freestyle tricks and mountain runs" frameborder="0" 
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                        allowfullscreen></iframe>
+            </div>
+        </section>
+
+        <section class="resort-info">
+            <h2>Top Snowboarding Destinations</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Resort Name</th>
+                        <th>Location</th>
+                        <th>Elevation (m)</th>
+                        <th>Trails</th>
+                        <th>Season</th>
+                        <th>Difficulty</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Whistler Blackcomb</td>
+                        <td>British Columbia, Canada</td>
+                        <td>2,284</td>
+                        <td>200+</td>
+                        <td>Nov - Apr</td>
+                        <td>All Levels</td>
+                    </tr>
+                    <tr>
+                        <td>Chamonix</td>
+                        <td>French Alps, France</td>
+                        <td>3,842</td>
+                        <td>115</td>
+                        <td>Dec - Apr</td>
+                        <td>Advanced</td>
+                    </tr>
+                    <tr>
+                        <td>Niseko</td>
+                        <td>Hokkaido, Japan</td>
+                        <td>1,308</td>
+                        <td>61</td>
+                        <td>Dec - Apr</td>
+                        <td>All Levels</td>
+                    </tr>
+                    <tr>
+                        <td>St. Anton am Arlberg</td>
+                        <td>Tyrol, Austria</td>
+                        <td>2,811</td>
+                        <td>88</td>
+                        <td>Dec - Apr</td>
+                        <td>Intermediate/Advanced</td>
+                    </tr>
+                    <tr>
+                        <td>Jackson Hole</td>
+                        <td>Wyoming, USA</td>
+                        <td>3,185</td>
+                        <td>133</td>
+                        <td>Dec - Apr</td>
+                        <td>All Levels</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section class="tips">
+            <h2>Essential Snowboarding Tips</h2>
+            <ol class="tips-list">
+                <li><strong>Master the Basics:</strong> Focus on proper stance, balance, and edge control before attempting advanced techniques.</li>
+                <li><strong>Invest in Quality Gear:</strong> Proper boots, bindings, and board make a significant difference in your performance and safety.</li>
+                <li><strong>Take Lessons:</strong> Professional instruction accelerates learning and helps prevent bad habits from forming.</li>
+                <li><strong>Practice Regularly:</strong> Consistent practice on various terrains builds muscle memory and confidence.</li>
+                <li><strong>Stay Fit:</strong> Snowboarding demands core strength, flexibility, and cardiovascular endurance.</li>
+                <li><strong>Know the Mountain:</strong> Study trail maps, understand difficulty ratings, and respect mountain safety rules.</li>
+                <li><strong>Ride with Others:</strong> Never ride alone, especially in backcountry areas or challenging conditions.</li>
+                <li><strong>Weather Awareness:</strong> Check conditions before heading out and be prepared for changing weather.</li>
+            </ol>
+        </section>
+
+        <section class="external-link">
+            <h2>Learn More</h2>
+            <p>For official snowboarding competitions, rules, and global events, visit the 
+               <a href="https://www.fis-ski.com/en/snowboard" target="_blank" rel="noopener noreferrer">
+                   International Ski Federation (FIS) Snowboard Division
+               </a>
+            </p>
+        </section>
+
+        <section class="cta">
+            <img src="Powder-snow.jpg" alt="Fresh powder snow covering mountain slopes with snowboard tracks" class="cta-image" onerror="this.outerHTML='<div class=&quot;image-placeholder&quot; style=&quot;width:40%;height:250px;&quot;>powder-snow.jpg</div>'">
+            <div class="cta-content">
+                <h2>Ready to Hit the Slopes?</h2>
+                <p>Join our community today and start your snowboarding adventure!</p>
+                <a href="register.html" class="cta-button">Register Now</a>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>© 2026 Alpine Rush. All rights reserved.</p>
+    </footer>
+</body>
+</html>
